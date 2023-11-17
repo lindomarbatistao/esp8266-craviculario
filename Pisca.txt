@@ -1,0 +1,24 @@
+#include <ESP8266WiFi.h>
+//https://randomnerdtutorials.com/esp8266-nodemcu-digital-inputs-outputs-arduino/
+
+
+int buttonState = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(D6, OUTPUT);  // Initialize the LED_BUILTIN pin as an output
+  pinMode(D7, INPUT);
+  digitalWrite(D7, LOW);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+
+  buttonState = digitalRead(D7);
+  Serial.println(buttonState);
+  if (buttonState == HIGH){
+    digitalWrite(D6, HIGH);
+  }else{
+    digitalWrite(D6, LOW);
+  }
+}

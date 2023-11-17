@@ -1,0 +1,30 @@
+#include <ESP8266WiFi.h>
+
+void setup()
+{
+  pinMode(D6, OUTPUT);
+  Serial.begin(115200);
+  Serial.println();
+
+  WiFi.begin("POCOF3", "lindomar2023");
+
+  Serial.print("Conectando");
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println();
+
+  Serial.print("Conectado, IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+
+void loop() {
+  if(WiFi.status() == WL_CONNECTED){
+    digitalWrite(D6, HIGH);
+  }else{
+    digitalWrite(D6, LOW);
+  }
+}
